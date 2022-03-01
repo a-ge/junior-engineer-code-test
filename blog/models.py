@@ -15,7 +15,7 @@ class Post(models.Model):
         return self.title
 
 class HitCount(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.PROTECT)
+    post = models.OneToOneField(Post, on_delete=models.CASCADE)
     hit_count = models.PositiveBigIntegerField(default=0)
 
     def __str__(self):

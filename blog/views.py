@@ -12,8 +12,17 @@ def index(request):
 def detail(request, post_id):
     try:
         post = Post.objects.get(pk=post_id)
-        hit_count = HitCount.objects.get(pk=post_id)
-        
+
+        # hit_check returns a tuple (object, created_Boolean)
+        # either created a new object with 0 hits, or grabbed already exiting object
+        hit_check = HitCount.objects.get_or_create(post=post)
+        # pull object from hit_check
+        hit_count = hit_check[0]
+
+        hit_count.hit_count = F('hit_count') + 1
+        hit_count.save()
+        hit_count.refresh_from_db()
+
     except Post.DoesNotExist:
         raise Http404("Post with given ID does not exist")
 
