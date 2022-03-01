@@ -1,5 +1,5 @@
 from django.http.response import Http404
-from .models import Post
+from .models import Post, HitCount
 
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -12,10 +12,9 @@ def index(request):
 def detail(request, post_id):
     try:
         post = Post.objects.get(pk=post_id)
-        post.hit_count = F('hit_count') + 1
-        post.save()
-        post = Post.objects.get(pk=post_id)
+        hit_count = HitCount.objects.get(pk=post_id)
+        
     except Post.DoesNotExist:
         raise Http404("Post with given ID does not exist")
 
-    return render(request, 'blog/detail.html', {'post': post})
+    return render(request, 'blog/detail.html', {'post': post, 'hit_count': hit_count})
