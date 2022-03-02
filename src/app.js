@@ -18,11 +18,25 @@
  */
 function isValid (input, expectedCost, expectedOldestYear) {
   // Your code here
-}
 
+
+  for (index = 0; index < input.length; index++ ) {
+    if (input[index]["type"] !== "Tractor") {
+      console.log(input[index])
+    }
+  }
+
+}
+const input = [{"type": 'Truck', "year": 2002, "value": 10000},  {"type": 'Tractor', "year": 2010, "value": 15000},  {"type": 'Trailer', "year": 2008, "value": 20000}];
+const expectedCost = 30000;
+const expectedOldestYear = 2002;
+
+console.log(isValid(input, expectedCost, expectedOldestYear))
 /**
  * Prompt: Implement a few tests to validate that your function works as expected
  */
 function testIsValid () {
   // Your code here
+
+
 }
