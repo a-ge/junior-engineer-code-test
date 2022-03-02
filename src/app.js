@@ -23,7 +23,7 @@ function isValid (input, expectedCost, expectedOldestYear) {
   let totalCost = 0;
 
   for (index = 0; index < input.length; index++ ) {
-    // Check if vehicle is not a Tractor.
+    // Check if vehicle is not a Trailer.
     if (input[index]["type"] !== "Trailer") {
       // Add vehicle's cost to totalCost
       totalCost += input[index]["value"];
@@ -42,11 +42,14 @@ function isValid (input, expectedCost, expectedOldestYear) {
 
 }
 
+
+
 /**
  * Prompt: Implement a few tests to validate that your function works as expected
  */
 function testIsValid () {
   // Your code here
+
   const input = [{"type": 'Truck', "year": 2002, "value": 10000},
                 {"type": 'Tractor', "year": 2010, "value": 15000},
                 {"type": 'Trailer', "year": 2008, "value": 20000}];
@@ -64,6 +67,7 @@ function testIsValid () {
 
   // Test2: result is false because totalCost!==expectedCost
   expectedCost = 35000;
+
   result = isValid(input, expectedCost, expectedOldestYear);
   if (result !== false) {
     console.log("Test2 Failed");
@@ -71,10 +75,11 @@ function testIsValid () {
     console.log("Test2 Passed");
   }
 
-  // Test3: result is false because totalCost!==expectedCost
+  // Test3: result is false because minYear!==expectedOldestYear
   // resetting expectedCost to keep all else equal to true scenario
   expectedCost = 25000;
   expectedOldestYear = 2000;
+
   result = isValid(input, expectedCost, expectedOldestYear);
   if (result !== false) {
     console.log("Test3 Failed");
