@@ -13,9 +13,10 @@ def detail(request, post_id):
     try:
         post = Post.objects.get(pk=post_id)
 
-        # hit_check returns a tuple (object, created_Boolean)
-        # either created a new object with 0 hits, or grabbed already exiting object
+        # hit_check returns a tuple (object, Boolean-true if db created a new row)
+        # either created a new object with 0 hits, or grabbed already exiting object's hits
         hit_check = HitCount.objects.get_or_create(post=post)
+        
         # pull object from hit_check
         hit_count = hit_check[0]
 
