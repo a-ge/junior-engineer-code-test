@@ -24,7 +24,7 @@ function isValid (input, expectedCost, expectedOldestYear) {
 
   for (index = 0; index < input.length; index++ ) {
     // Check if vehicle is not a Tractor.
-    if (input[index]["type"] !== "Tractor") {
+    if (input[index]["type"] !== "Trailer") {
       // Add vehicle's cost to totalCost
       totalCost += input[index]["value"];
       // Check if vehicle year is older than the current minYear
@@ -33,7 +33,8 @@ function isValid (input, expectedCost, expectedOldestYear) {
       }
     }
   }
-
+  console.log(minYear)
+  console.log(totalCost)
   if (minYear !== expectedOldestYear || totalCost !== expectedCost) {
     return false;
   } else {
@@ -50,7 +51,7 @@ function testIsValid () {
   const input = [{"type": 'Truck', "year": 2002, "value": 10000},
                 {"type": 'Tractor', "year": 2010, "value": 15000},
                 {"type": 'Trailer', "year": 2008, "value": 20000}];
-  let expectedCost = 30000;
+  let expectedCost = 25000;
   let expectedOldestYear = 2002;
 
   let result = isValid(input, expectedCost, expectedOldestYear)
@@ -60,6 +61,5 @@ function testIsValid () {
     console.log("Test1 Passed")
   }
 
-}
 
 testIsValid();
