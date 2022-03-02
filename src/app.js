@@ -20,17 +20,19 @@ function isValid (input, expectedCost, expectedOldestYear) {
   // Your code here
 
   let minYear = input[0]["year"]
-
+  let totalCost = 0
 
   for (index = 0; index < input.length; index++ ) {
 
     // Check if vehicle is not a Tractor.
     if (input[index]["type"] !== "Tractor") {
+      // Add vehicle's cost to totalCost
+      totalCost += input[index]["value"]
       // Check if vehicle year is older than the current minYear
       if (input[index]["year"] < minYear) {
         minYear = input[index]["year"]
       }
-      console.log(minYear)
+      console.log(totalCost)
     }
   }
 
