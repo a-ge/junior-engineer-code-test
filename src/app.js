@@ -37,20 +37,29 @@ function isValid (input, expectedCost, expectedOldestYear) {
   if (minYear !== expectedOldestYear || totalCost !== expectedCost) {
     return false;
   } else {
-    return true
+    return true;
   }
-  
-}
-const input = [{"type": 'Truck', "year": 2002, "value": 20000},  {"type": 'Tractor', "year": 2010, "value": 15000},  {"type": 'Trailer', "year": 2008, "value": 20000}];
-const expectedCost = 30000;
-const expectedOldestYear = 2002;
 
-console.log(isValid(input, expectedCost, expectedOldestYear))
+}
+
 /**
  * Prompt: Implement a few tests to validate that your function works as expected
  */
 function testIsValid () {
   // Your code here
+  const input = [{"type": 'Truck', "year": 2002, "value": 10000},
+                {"type": 'Tractor', "year": 2010, "value": 15000},
+                {"type": 'Trailer', "year": 2008, "value": 20000}];
+  let expectedCost = 30000;
+  let expectedOldestYear = 2002;
 
+  let result = isValid(input, expectedCost, expectedOldestYear)
+  if (result !== true) {
+    console.log("Test1 Failed")
+  } else {
+    console.log("Test1 Passed")
+  }
 
 }
+
+testIsValid();
