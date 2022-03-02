@@ -33,8 +33,7 @@ function isValid (input, expectedCost, expectedOldestYear) {
       }
     }
   }
-  console.log(minYear)
-  console.log(totalCost)
+
   if (minYear !== expectedOldestYear || totalCost !== expectedCost) {
     return false;
   } else {
@@ -51,15 +50,36 @@ function testIsValid () {
   const input = [{"type": 'Truck', "year": 2002, "value": 10000},
                 {"type": 'Tractor', "year": 2010, "value": 15000},
                 {"type": 'Trailer', "year": 2008, "value": 20000}];
+
+  // Test1: result is true because minYear===expectedOldestYear and totalCost===expectedCost
   let expectedCost = 25000;
   let expectedOldestYear = 2002;
 
-  let result = isValid(input, expectedCost, expectedOldestYear)
+  let result = isValid(input, expectedCost, expectedOldestYear);
   if (result !== true) {
-    console.log("Test1 Failed")
+    console.log("Test1 Failed");
   } else {
-    console.log("Test1 Passed")
+    console.log("Test1 Passed");
   }
 
+  // Test2: result is false because totalCost!==expectedCost
+  expectedCost = 35000;
+  result = isValid(input, expectedCost, expectedOldestYear);
+  if (result !== false) {
+    console.log("Test2 Failed");
+  } else {
+    console.log("Test2 Passed");
+  }
 
-testIsValid();
+  // Test3: result is false because totalCost!==expectedCost
+  // resetting expectedCost to keep all else equal to true scenario
+  expectedCost = 25000;
+  expectedOldestYear = 2000;
+  result = isValid(input, expectedCost, expectedOldestYear);
+  if (result !== false) {
+    console.log("Test3 Failed");
+  } else {
+    console.log("Test3 Passed");
+  }
+
+}
