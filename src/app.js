@@ -19,15 +19,23 @@
 function isValid (input, expectedCost, expectedOldestYear) {
   // Your code here
 
+  let minYear = input[0]["year"]
+
 
   for (index = 0; index < input.length; index++ ) {
+
+    // Check if vehicle is not a Tractor.
     if (input[index]["type"] !== "Tractor") {
-      console.log(input[index])
+      // Check if vehicle year is older than the current minYear
+      if (input[index]["year"] < minYear) {
+        minYear = input[index]["year"]
+      }
+      console.log(minYear)
     }
   }
 
 }
-const input = [{"type": 'Truck', "year": 2002, "value": 10000},  {"type": 'Tractor', "year": 2010, "value": 15000},  {"type": 'Trailer', "year": 2008, "value": 20000}];
+const input = [{"type": 'Truck', "year": 2020, "value": 10000},  {"type": 'Tractor', "year": 2010, "value": 15000},  {"type": 'Trailer', "year": 2008, "value": 20000}];
 const expectedCost = 30000;
 const expectedOldestYear = 2002;
 
